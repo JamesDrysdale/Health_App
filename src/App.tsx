@@ -1,4 +1,16 @@
-import { IonApp, IonHeader, IonContent, IonToolbar, IonTitle } from '@ionic/react';
+import { 
+  IonApp, 
+  IonHeader, 
+  IonContent, 
+  IonToolbar, 
+  IonTitle, 
+  IonGrid, 
+  IonRow, 
+  IonCol, 
+  IonItem, 
+  IonLabel, 
+  IonInput 
+} from '@ionic/react';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -26,7 +38,30 @@ const App: React.FC = () => (
         <IonTitle>BMI Calculator</IonTitle>
       </IonToolbar>
     </IonHeader>
-    <IonContent></IonContent>
+    <IonContent>
+      <IonGrid>
+        <IonRow>
+          <IonCol>
+            <IonItem>
+              <IonLabel position="floating">
+                Your Height
+              </IonLabel>
+              <IonInput>
+
+              </IonInput>
+            </IonItem>
+            <IonItem>
+              <IonLabel position="floating">
+                Your Weight
+              </IonLabel>
+              <IonInput>
+
+              </IonInput>
+            </IonItem>
+          </IonCol>
+        </IonRow>
+      </IonGrid>
+    </IonContent>
   </IonApp>
 );
 

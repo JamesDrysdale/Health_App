@@ -39,9 +39,12 @@ const App: React.FC = () => (
       </IonToolbar>
     </IonHeader>
     <IonContent>
+
       <IonGrid>
         <IonRow>
           <IonCol>
+
+            {/* Input for User's height */}
             <IonItem>
               <IonLabel position="floating">
                 Your Height
@@ -50,6 +53,8 @@ const App: React.FC = () => (
 
               </IonInput>
             </IonItem>
+
+            {/* Input for User's weight */}
             <IonItem>
               <IonLabel position="floating">
                 Your Weight

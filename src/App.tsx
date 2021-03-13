@@ -53,7 +53,11 @@ const App: React.FC = () => (
 
               </IonInput>
             </IonItem>
+          </IonCol>
+        </IonRow>
 
+        <IonRow>
+          <IonCol>
             {/* Input for User's weight */}
             <IonItem>
               <IonLabel position="floating">

@@ -1,4 +1,4 @@
-import { IonApp } from '@ionic/react';
+import { IonApp, IonHeader, IonContent, IonToolbar, IonTitle } from '@ionic/react';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -21,7 +21,12 @@ import './theme/variables.css';
 
 const App: React.FC = () => (
   <IonApp>
-    <h2>This works</h2>
+    <IonHeader>
+      <IonToolbar>
+        <IonTitle>BMI Calculator</IonTitle>
+      </IonToolbar>
+    </IonHeader>
+    <IonContent></IonContent>
   </IonApp>
 );
 

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { 
   IonApp, 
   IonHeader, 
@@ -12,7 +12,9 @@ import {
   IonLabel, 
   IonInput, 
   IonButton,
-  IonIcon
+  IonIcon,
+  IonCard,
+  IonCardContent
 } from '@ionic/react';
 
 import { calculatorOutline, refreshOutline} from 'ionicons/icons';
@@ -37,6 +39,8 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 const App: React.FC = () => {
+  const [ calculatedBmi, setCalculatedBmi ] = useState<number>();
+
   const weightInputRef = useRef<HTMLIonInputElement>(null);
   const heightInputRef = useRef<HTMLIonInputElement>(null);
 
@@ -49,7 +53,8 @@ const App: React.FC = () => {
     }
 
     const bmi = +enteredWeight / (+enteredHeight * +enteredHeight);
-    console.log(bmi);
+    
+    setCalculatedBmi(bmi);
   };
 
   const resetInputs = () => {
@@ -107,12 +112,18 @@ const App: React.FC = () => {
             </IonCol>
           </IonRow>
 
-          {/* Result Area */}
-          <IonRow>
-            <IonCol>
-
-            </IonCol>
-          </IonRow>
+          {/* Result Area - only shows if calculatedBmi has a value */}
+          {calculatedBmi && (
+            <IonRow>
+              <IonCol>
+                <IonCard>
+                  <IonCardContent>
+                    <h2>{calculatedBmi}</h2>
+                  </IonCardContent>
+                </IonCard>
+              </IonCol>
+            </IonRow>
+          )}
         </IonGrid>
       </IonContent>
     </IonApp>

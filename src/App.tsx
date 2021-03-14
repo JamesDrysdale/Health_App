@@ -1,3 +1,4 @@
+import React, { useRef } from 'react';
 import { 
   IonApp, 
   IonHeader, 
@@ -35,72 +36,87 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonHeader>
-      <IonToolbar>
-        <IonTitle>BMI Calculator</IonTitle>
-      </IonToolbar>
-    </IonHeader>
-    <IonContent className="ion-padding">
+const App: React.FC = () => {
+  const weightInputRef = useRef<HTMLIonInputElement>(null);
+  const heightInputRef = useRef<HTMLIonInputElement>(null);
 
-      <IonGrid>
+  const calculateBMI = () => {
+    const enteredWeight = weightInputRef.current!.value;
+    const enteredHeight = heightInputRef.current!.value;
 
-        {/* Input for User's height */}
-        <IonRow>
-          <IonCol>
-            <IonItem>
-              <IonLabel position="floating">
-                Your Height
-              </IonLabel>
-              <IonInput>
+    if (!enteredHeight || !enteredWeight) {
+      return;
+    }
 
-              </IonInput>
-            </IonItem>
-          </IonCol>
-        </IonRow>
-        
-        {/* Input for User's weight */}
-        <IonRow>
-          <IonCol>
-            <IonItem>
-              <IonLabel position="floating">
-                Your Weight
-              </IonLabel>
-              <IonInput>
+    const bmi = +enteredWeight / (+enteredHeight * +enteredHeight);
+    console.log(bmi);
+  };
 
-              </IonInput>
-            </IonItem>
-          </IonCol>
-        </IonRow>
+  const resetInputs = () => {
+    weightInputRef.current!.value = '';
+    heightInputRef.current!.value = '';
 
-        {/* Buttons: calculate BMI & reset inputs */}
-        <IonRow>
-          <IonCol className="ion-text-left">
-            {/* Button to reset any values in input fields */}
-            <IonButton>
-              <IonIcon slot="start" icon={refreshOutline} />
-              Reset
-            </IonButton>
-          </IonCol>
-          <IonCol className="ion-text-right">
-            {/* Button to Calculate BMI based on given inputs */}
-            <IonButton>
-              <IonIcon slot="start" icon={calculatorOutline} />
-              Calculate
-            </IonButton>
-          </IonCol>
-        </IonRow>
+  };
 
-        {/* Result Area */}
-        <IonRow>
-          <IonCol>
+  return (
+    <IonApp>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>BMI Calculator</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent className="ion-padding">
 
-          </IonCol>
-        </IonRow>
-      </IonGrid>
-    </IonContent>
-  </IonApp>
-);
+        <IonGrid>
+
+          {/* Input for User's height */}
+          <IonRow>
+            <IonCol>
+              <IonItem>
+                <IonLabel position="floating">Your Height</IonLabel>
+                <IonInput ref={heightInputRef}></IonInput>
+              </IonItem>
+            </IonCol>
+          </IonRow>
+          
+          {/* Input for User's weight */}
+          <IonRow>
+            <IonCol>
+              <IonItem>
+                <IonLabel position="floating">Your Weight</IonLabel>
+                <IonInput ref={weightInputRef}></IonInput>
+              </IonItem>
+            </IonCol>
+          </IonRow>
+
+          {/* Buttons: calculate BMI & reset inputs */}
+          <IonRow>
+            <IonCol className="ion-text-left">
+              {/* Button to reset any values in input fields */}
+              <IonButton onClick={resetInputs}>
+                <IonIcon slot="start" icon={refreshOutline} />
+                Reset
+              </IonButton>
+            </IonCol>
+            <IonCol className="ion-text-right">
+              {/* Button to Calculate BMI based on given inputs */}
+              <IonButton onClick={calculateBMI}>
+                <IonIcon slot="start" icon={calculatorOutline} />
+                Calculate
+              </IonButton>
+            </IonCol>
+          </IonRow>
+
+          {/* Result Area */}
+          <IonRow>
+            <IonCol>
+
+            </IonCol>
+          </IonRow>
+        </IonGrid>
+      </IonContent>
+    </IonApp>
+  );
+};
 
 export default App;

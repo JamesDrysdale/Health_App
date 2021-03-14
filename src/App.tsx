@@ -9,8 +9,12 @@ import {
   IonCol, 
   IonItem, 
   IonLabel, 
-  IonInput 
+  IonInput, 
+  IonButton,
+  IonIcon
 } from '@ionic/react';
+
+import { calculatorOutline, refreshOutline} from 'ionicons/icons';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -38,13 +42,13 @@ const App: React.FC = () => (
         <IonTitle>BMI Calculator</IonTitle>
       </IonToolbar>
     </IonHeader>
-    <IonContent>
+    <IonContent className="ion-padding">
 
       <IonGrid>
+
+        {/* Input for User's height */}
         <IonRow>
           <IonCol>
-
-            {/* Input for User's height */}
             <IonItem>
               <IonLabel position="floating">
                 Your Height
@@ -55,10 +59,10 @@ const App: React.FC = () => (
             </IonItem>
           </IonCol>
         </IonRow>
-
+        
+        {/* Input for User's weight */}
         <IonRow>
           <IonCol>
-            {/* Input for User's weight */}
             <IonItem>
               <IonLabel position="floating">
                 Your Weight
@@ -67,6 +71,31 @@ const App: React.FC = () => (
 
               </IonInput>
             </IonItem>
+          </IonCol>
+        </IonRow>
+
+        {/* Buttons: calculate BMI & reset inputs */}
+        <IonRow>
+          <IonCol className="ion-text-left">
+            {/* Button to reset any values in input fields */}
+            <IonButton>
+              <IonIcon slot="start" icon={refreshOutline} />
+              Reset
+            </IonButton>
+          </IonCol>
+          <IonCol className="ion-text-right">
+            {/* Button to Calculate BMI based on given inputs */}
+            <IonButton>
+              <IonIcon slot="start" icon={calculatorOutline} />
+              Calculate
+            </IonButton>
+          </IonCol>
+        </IonRow>
+
+        {/* Result Area */}
+        <IonRow>
+          <IonCol>
+
           </IonCol>
         </IonRow>
       </IonGrid>

@@ -45,7 +45,12 @@ const App: React.FC = () => {
     const enteredWeight = weightInputRef.current!.value;
     const enteredHeight = heightInputRef.current!.value;
 
-    if (!enteredHeight || !enteredWeight) {
+    if (
+      !enteredHeight || 
+      !enteredWeight || 
+      +enteredWeight <= 0 || 
+      +enteredHeight <= 0
+      ) {
       return;
     }
 
@@ -76,7 +81,7 @@ const App: React.FC = () => {
             <IonCol>
               <IonItem>
                 <IonLabel position="floating">Your Height</IonLabel>
-                <IonInput ref={heightInputRef}></IonInput>
+                <IonInput type="number" ref={heightInputRef}></IonInput>
               </IonItem>
             </IonCol>
           </IonRow>
@@ -86,7 +91,7 @@ const App: React.FC = () => {
             <IonCol>
               <IonItem>
                 <IonLabel position="floating">Your Weight</IonLabel>
-                <IonInput ref={weightInputRef}></IonInput>
+                <IonInput type="number" ref={weightInputRef}></IonInput>
               </IonItem>
             </IonCol>
           </IonRow>

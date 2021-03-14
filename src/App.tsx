@@ -16,6 +16,7 @@ import {
 
 import BmiControls from './components/BmiControls';
 import BmiResult from './components/BmiResult';
+import InputControl from './components/InputControl';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -88,6 +89,12 @@ const App: React.FC = () => {
         <IonContent className="ion-padding">
 
           <IonGrid>
+            {/* Segmented buttons to choose metrics */}
+            <IonRow>
+              <IonCol>
+                <InputControl selectedValue="mkg" />
+              </IonCol>
+            </IonRow>
 
             {/* Input for User's height */}
             <IonRow>

@@ -63,7 +63,7 @@ const App: React.FC = () => {
   return (
     <IonApp>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="primary" className="ion-text-center">
           <IonTitle>BMI Calculator</IonTitle>
         </IonToolbar>
       </IonHeader>
